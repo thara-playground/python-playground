@@ -1,3 +1,40 @@
+"""
+>>> LinkedList = SinglyLinkedList
+>>> l = LinkedList()
+>>> len(l)
+0
+>>> l = LinkedList(1, 2, 3)
+>>> len(l)
+3
+>>> l = LinkedList(12, 99, 37)
+>>> for e in l:
+...     print(e)
+12
+99
+37
+>>> l.append(37)
+>>> len(l)
+4
+>>> l[0]
+12
+>>> l[2]
+37
+>>> l[4]
+Traceback (most recent call last):
+...
+IndexError: Not found
+>>> 
+>>> l = LinkedList(12,99,37)
+>>> l.insert(0, 128)
+>>> l.insert(2, 256)
+>>> l[0], l[1], l[2], l[3]
+(128, 12, 256, 99)
+>>> l.insert(5, 1024)
+>>> l[4], l[5]
+(37, 1024)
+>>> len(l)
+6
+"""
 
 class Node:
 
@@ -7,18 +44,6 @@ class Node:
 
 
 class SinglyLinkedList:
-    """
-    >>> l = SinglyLinkedList()
-    >>> len(l)
-    0
-    >>> l = SinglyLinkedList(1)
-    >>> len(l)
-    1
-    >>> l = SinglyLinkedList(1, 2, 3)
-    >>> len(l)
-    3
-    """
-
     def __init__(self, *args):
         if 0 < len(args):
             self._first = Node(args[0])
@@ -41,14 +66,6 @@ class SinglyLinkedList:
             current.next = new_node
 
     def __iter__(self):
-        """
-        >>> l = SinglyLinkedList(12, 99, 37)
-        >>> for e in l:
-        ...     print(e)
-        12
-        99
-        37
-        """
         current = self._first
         while True:
             if current is None:
@@ -57,49 +74,15 @@ class SinglyLinkedList:
             current = current.next
 
     def __len__(self):
-        """
-        >>> l = SinglyLinkedList()
-        >>> len(l)
-        0
-        >>> l = SinglyLinkedList(12, 99)
-        >>> len(l)
-        2
-        >>> l.append(37)
-        >>> len(l)
-        3
-        """
         return sum(1 for _ in self)
 
     def __getitem__(self, index):
-        """
-        >>> l = SinglyLinkedList(12,99,37)
-        >>> l[0]
-        12
-        >>> l[2]
-        37
-        >>> l[3]
-        Traceback (most recent call last):
-        ...
-        IndexError: Not found
-        """
         for i, e in enumerate(self):
             if i == index:
                 return e
         raise IndexError("Not found")
 
     def insert(self, index, value):
-        """
-        >>> l = SinglyLinkedList(12,99,37)
-        >>> l.insert(0, 128)
-        >>> l.insert(2, 256)
-        >>> l[0], l[1], l[2], l[3]
-        (128, 12, 256, 99)
-        >>> l.insert(5, 1024)
-        >>> l[4], l[5]
-        (37, 1024)
-        >>> len(l)
-        6
-        """
         prev = None
         current = self._first
         i = 0
