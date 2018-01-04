@@ -3,7 +3,7 @@ TODO
 
 - data structure
   - [x] Linked List
-  - [ ] Stack
+  - [x] Stack
   - [ ] Queue
   - [ ] Hash Table
     - [ ] Consistent hashing
