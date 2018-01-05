@@ -1,22 +1,30 @@
 """
->>> q = Queue()
+>>> q = Queue(capacity=5)
 >>> len(q)
 0
 >>> q.enqueue("aaa")
 >>> q.enqueue("bbb")
 >>> q.enqueue("ccc")
+>>> q.enqueue("ddd")
+>>> q.enqueue("eee")
 >>> len(q)
-3
+5
+>>> q.enqueue("fff")
+Traceback (most recent call last):
+...
+AssertionError
 >>> q.dequeue()
 'aaa'
 >>> q.dequeue()
 'bbb'
 >>> len(q)
-1
->>> q.enqueue("ddd")
+3
+>>> q.enqueue("ggg")
 >>> len(q)
-2
+4
 >>> q.front()
+'ccc'
+>>> q.dequeue()
 'ccc'
 """
 
@@ -27,21 +35,27 @@ class Queue:
     def __init__(self, capacity=10):
         # Circular buffer
         self._bf = [None] * capacity
-
         self._front = 0
         self._back = 0
+        self._capacity = capacity
+        self._length = 0
 
     def enqueue(self, data):
+        assert self._length < self._capacity
         self._bf[self._back] = data
-        self._back += 1
+        n = self._back + 1
+        self._back = 0 if self._capacity <= n else n
+        self._length += 1
 
     def dequeue(self):
         data = self._bf[self._front]
-        self._front += 1
+        n = self._front + 1
+        self._front = 0 if self._capacity <= n else n
+        self._length -= 1
         return data
 
     def __len__(self):
-        return abs(self._front - self._back)
+        return self._length
 
     def front(self):
         return self._bf[self._front]
