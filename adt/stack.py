@@ -23,7 +23,7 @@
 class Stack:
 
     def __init__(self, capacity=10):
-        self._data = [None] * 10
+        self._data = [None] * capacity
         self._length = 0
         self._capacity = capacity
 
