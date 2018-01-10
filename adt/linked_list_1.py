@@ -34,6 +34,15 @@ IndexError: Not found
 (37, 1024)
 >>> len(l)
 6
+>>> del l[3]
+>>> l[0], l[1], l[2], l[3], l[4]
+(128, 12, 256, 37, 1024)
+>>> del l[0]
+>>> del l[3]
+>>> l[0], l[1], l[2]
+(12, 256, 37)
+>>> len(l)
+3
 """
 
 class Node:
@@ -102,6 +111,33 @@ class SinglyLinkedList:
                 prev = current
                 current = current.next
             i = i + 1
+
+    def __delitem__(self, index):
+
+        if index == 0:
+            self._first = self._first.next
+            return
+
+        prev = None
+        next = None
+
+        i = 0
+        size = len(self)
+        current = self._first
+        while current is not None:
+            if i == index:
+                next = current.next
+                break
+            prev = current
+            current = current.next
+            i = i + 1
+
+        if prev is None:
+            pass
+
+        if prev is None and next is None:
+            raise IndexError("Not found")
+        prev.next = next
 
 
 if __name__ == "__main__":
