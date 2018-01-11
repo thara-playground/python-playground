@@ -6,7 +6,8 @@ TODO
   - [x] Stack
   - [x] Queue
   - [ ] Hash Table
-    - [ ] Consistent hashing
+    - [x] Open Addressing
+    - [x] Separate chaining
     - [ ] Hash array mapped trie
   - Tree
     - [ ] Binary Tree
@@ -34,6 +35,7 @@ TODO
   - Random
     - [ ] Walker's alias method
     - [ ] Fisher-Yates shuffle
+  - [ ] Block chain
 - Parser
   - [ ] Recursive Descent Parsing
   - [ ] Parser combinator
