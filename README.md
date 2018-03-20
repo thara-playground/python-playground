@@ -28,7 +28,7 @@ TODO
     - [x] Insertion Sort
     - [x] Shell Sort
     - [x] Quick Sort
-    - [ ] Merge Sort
+    - [x] Merge Sort
     - [ ] Heap Sort
     - [ ] Bucket Sort
     - [ ] Counting Sort
