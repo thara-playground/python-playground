@@ -24,7 +24,7 @@ TODO
     - [ ] Aho-Corasick
   - Sort
     - [x] Babble Sort
-    - [ ] Selection Sort
+    - [x] Selection Sort
     - [ ] Insertion Sort
     - [ ] Shell Sort
     - [ ] Quick Sort
