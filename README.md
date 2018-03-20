@@ -25,7 +25,7 @@ TODO
   - Sort
     - [x] Babble Sort
     - [x] Selection Sort
-    - [ ] Insertion Sort
+    - [x] Insertion Sort
     - [ ] Shell Sort
     - [ ] Quick Sort
     - [ ] Merge Sort
