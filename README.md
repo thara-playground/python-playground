@@ -23,7 +23,7 @@ TODO
     - [ ] Knuth-Morris-Pratt algorithm
     - [ ] Aho-Corasick
   - Sort
-    - [ ] Babble Sort
+    - [x] Babble Sort
     - [ ] Selection Sort
     - [ ] Insertion Sort
     - [ ] Shell Sort
