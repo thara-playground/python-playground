@@ -18,7 +18,7 @@ TODO
       - [ ] Radix tree
 - Algorithm
   - Search
-    - [ ] Binary Search
+    - [x] Binary Search
     - [ ] Boyer-Moore String Search algorithm
     - [ ] Knuth-Morris-Pratt algorithm
     - [ ] Aho-Corasick
