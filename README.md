@@ -10,11 +10,19 @@ TODO
     - [x] Separate chaining
     - [ ] Hash array mapped trie
   - Tree
-    - [ ] Binary Tree
-    - [ ] Binary Search Tree
-    - [ ] Balanced Tree
+    - [x] Binary Tree
+    - [x] Binary Search Tree
+    - Self-balancing binary search tree
+      - [ ] AVL tree
+      - [ ] Red-black tree
+      - [ ] Splay tree
+      - [ ] Treap tree
+      - [ ] AA tree
+    - Balance tree
+      - [ ] B Tree
+      - [ ] B+ Tree
     - [ ] Heap
-    - [ ] Tri Tree
+    - [ ] Tri
       - [ ] Radix tree
 - Algorithm
   - Search
