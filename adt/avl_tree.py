@@ -14,13 +14,13 @@
 True
 >>> 21 in t
 False
->>> #t.append(9); t.root.value, t.root.left.value, t.root.right.value, t.to_list()
+>>> t.append(9); t.root.value, t.root.left.value, t.root.right.value, t.to_list()
 (20, 10, 40, [9, 10, 20, 30, 40, 50])
->>> #t.remove(9)
+>>> t.remove(9)
 >>> t.append(29); t.root.value, t.root.left.value, t.root.right.value, t.to_list()
 (30, 20, 40, [10, 20, 29, 30, 40, 50])
->>> #t.to_list()
-[9, 10, 20, 29, 30, 40, 50]
+>>> t.to_list()
+[10, 20, 29, 30, 40, 50]
 """
 import enum
 
@@ -29,6 +29,7 @@ class Rotation(enum.Enum):
     RIGHT = 1
 
 
+#FIXME The implementation should be simpler.
 class AVLTree:
 
     def __init__(self):
@@ -96,18 +97,30 @@ class AVLTree:
         return pivot
 
     def remove(self, value):
-        pass
+        if self._root.value == value:
+            self._root = None
+        else:
+            self._remove_node(self._root, self._root._left, value)
+            self._remove_node(self._root, self._root._right, value)
 
-    def _remove_node(self, parent, value):
-        if parent.value == value:
-            n, p, pl, pr = self._find_large_node(parent)
-            parent._value = n.value
-            p._left = pl
-            p._right = pr
-            parent.update_balance()
-        # else:
+    def _remove_node(self, parent, node, value):
+        if node is None:
+            return
+        if node.value == value:
+            if node.children_count() <= 1:
+                child = node._left or node._right
+                parent.swap_child(node, child)
+            else:
+                n, p, pl, pr = self._find_large_node(parent)
+                parent._value = n.value
+                p._left = pl
+                p._right = pr
+                parent.update_balance()
+        elif value < node.value:
+            self._remove_node(node, node._left, value)
+        else:
+            self._remove_node(node, node._right, value)
 
-        # pass
 
     def __contains__(self, value):
         return self._find_node(value) is not None
@@ -125,24 +138,22 @@ class AVLTree:
 
     def _find_large_node(self, node):
         if node.right is not None:
-            n, *p = _find_large_node(node.right.right)
+            n, p = _find_large_node(node.right.right)
             if n is not None:
-                return n, *p
-            n, *p = _find_large_node(node.right.left)
+                return n, p
+            n, p = _find_large_node(node.right.left)
             if n is not None:
-                return n, *p
+                return n, p
             return node.right, node, node.left, None
         if node.left is not None:
-            n, *p = _find_large_node(node.left.right)
+            n, p = _find_large_node(node.left.right)
             if n is not None:
-                return n, *p
-            n, *p = _find_large_node(node.left.left)
+                return n, p
+            n, p = _find_large_node(node.left.left)
             if n is not None:
-                return n, *p
+                return n, p
             return node.left, node, None, node.right
-
         return None, None, None, None
-
 
     def to_list(self):
         nodes = self._root.in_order()
@@ -190,6 +201,15 @@ class Node:
         l = self._left.in_order() if self._left else []
         r = self._right.in_order() if self._right else []
         return l + [self] + r
+
+    def children_count(self):
+        return int(self._left is not None) + int(self._right is not None)
+
+    def swap_child(self, old, new):
+        if self._left.value == old.value:
+            self._left = new
+        elif self._right.value == old.value:
+            self._right = new
 
 
 if __name__ == "__main__":
