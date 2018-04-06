@@ -13,7 +13,7 @@ TODO
     - [x] Binary Tree
     - [x] Binary Search Tree
     - Self-balancing binary search tree
-      - [ ] AVL tree
+      - [x] AVL tree
       - [ ] Red-black tree
       - [ ] Splay tree
       - [ ] Treap tree
