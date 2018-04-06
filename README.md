@@ -21,7 +21,10 @@ TODO
     - Balance tree
       - [ ] B Tree
       - [ ] B+ Tree
-    - [ ] Heap
+    - Heap
+      - [ ] Binary Heap
+      - [ ] Binomial Heap
+      - [ ] Fibonacci Heap
     - [ ] Tri
       - [ ] Radix tree
 - Algorithm
